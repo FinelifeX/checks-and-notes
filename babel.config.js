@@ -11,6 +11,8 @@ module.exports = {
           '@screens': './src/screens',
           '@utils': './src/utils',
           '@navigation': './src/navigation',
+          '@typings': './src/types',
+          '@assets': './assets',
         },
       },
     ],
