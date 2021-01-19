@@ -1,10 +1,15 @@
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+import { Layout, Text } from '@ui-kitten/components';
+import { SafeAreaView } from 'react-native';
+import { TopNavBar } from '@components/index';
 
 export const Greeting: FC = () => {
   return (
-    <View>
-      <Text>Greeting Screen</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#8F9BB3' }}>
+      <TopNavBar title="Welcome!" textAlignment="center" />
+      <Layout style={{ flex: 1 }}>
+        <Text>Welcome</Text>
+      </Layout>
+    </SafeAreaView>
   );
 };

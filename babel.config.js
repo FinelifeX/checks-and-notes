@@ -13,6 +13,7 @@ module.exports = {
           '@navigation': './src/navigation',
           '@typings': './src/types',
           '@assets': './assets',
+          '@constants': './src/constants',
         },
       },
     ],
