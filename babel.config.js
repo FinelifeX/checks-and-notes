@@ -14,6 +14,7 @@ module.exports = {
           '@typings': './src/types',
           '@assets': './assets',
           '@constants': './src/constants',
+          '@hooks': './src/hooks',
         },
       },
     ],
