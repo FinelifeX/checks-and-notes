@@ -5,12 +5,13 @@ import {
   Note as NoteScreen,
   Settings as SettingsScreen,
 } from '@screens/index';
+import { navigatorDefaultOptions } from './options';
 
 const { Navigator, Screen } = createStackNavigator();
 
 export const HomeNavigator: FC = () => {
   return (
-    <Navigator>
+    <Navigator screenOptions={navigatorDefaultOptions}>
       <Screen name="Home" component={HomeScreen} />
       <Screen name="Note" component={NoteScreen} />
       <Screen name="Settings" component={SettingsScreen} />

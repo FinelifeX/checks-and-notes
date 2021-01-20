@@ -7,3 +7,7 @@ export const rootNavigatorScreenOptions: StackNavigationOptions = {
 export const splashScreenOptions: StackNavigationOptions = {
   headerShown: false,
 };
+
+export const navigatorDefaultOptions: StackNavigationOptions = {
+  headerShown: false,
+};

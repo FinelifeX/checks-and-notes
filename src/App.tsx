@@ -1,17 +1,25 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { ApplicationProvider } from '@ui-kitten/components';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { RootNavigator } from '@navigation/index';
+
+const mapping = require('./mapping.json');
 
 const App = () => {
   return (
-    <ApplicationProvider {...eva} theme={eva.dark}>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
-    </ApplicationProvider>
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={eva.dark} customMapping={mapping}>
+        <StatusBar barStyle="light-content" />
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </ApplicationProvider>
+    </>
   );
 };
 
