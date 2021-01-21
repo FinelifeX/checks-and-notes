@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import { SafeAreaView, Text } from 'react-native';
 import { Divider, Layout, TopNavigation } from '@ui-kitten/components';
+
 import {
   NoteScreenNavigationProp,
   NoteScreenRouteProp,
 } from '@typings/navigation';
+
 import { makeScreenTitle } from './utils';
 import { styles } from './styles';
 
@@ -13,7 +15,7 @@ type Props = {
   route: NoteScreenRouteProp;
 };
 
-export const Note: FC<Props> = ({ route }) => {
+const Note: FC<Props> = ({ route }) => {
   const { data } = route.params ?? {};
   return (
     <SafeAreaView>
@@ -25,3 +27,5 @@ export const Note: FC<Props> = ({ route }) => {
     </SafeAreaView>
   );
 };
+
+export default Note;

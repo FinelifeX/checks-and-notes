@@ -1,12 +1,12 @@
-import { Divider, TopNavigation } from '@ui-kitten/components';
 import React, { FC } from 'react';
+import { Divider, TopNavigation } from '@ui-kitten/components';
 
 type Props = {
   title: string;
   textAlignment?: 'start' | 'center';
 };
 
-export const TopNavBar: FC<Props> = ({ title, textAlignment }) => {
+const TopNavBar: FC<Props> = ({ title, textAlignment }) => {
   return (
     <>
       <TopNavigation title={title} alignment={textAlignment} />
@@ -14,3 +14,5 @@ export const TopNavBar: FC<Props> = ({ title, textAlignment }) => {
     </>
   );
 };
+
+export default TopNavBar;

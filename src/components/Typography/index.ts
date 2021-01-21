@@ -1,5 +1,7 @@
 import { Paragraph } from './Paragraph';
 
-export const Typography = {
+const Typography = {
   Paragraph,
 };
+
+export default Typography;

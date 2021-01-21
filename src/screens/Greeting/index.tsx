@@ -1,17 +1,26 @@
 import React, { FC, useCallback } from 'react';
 import { View } from 'react-native';
 import { Text, Icon, Button } from '@ui-kitten/components';
-import { SafeAreaView, Layout, Typography } from '@components/index';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { greetingScreenListItems } from '@constants/greetingScreenListItems';
 import { Colors } from '@constants/colors';
+import { AsyncStorageKeys } from '@constants/asyncStorage';
+import Typography from '@components/Typography';
+import SafeAreaView from '@components/SafeAreaView';
+import Layout from '@components/Layout';
+import { GreetingScreenNavigationProp } from '@typings/navigation';
+
 import { commonStyles } from '../../commonStyles';
 import { styles } from './styles';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AsyncStorageKeys } from '@constants/asyncStorage';
+
+type Props = {
+  navigation: GreetingScreenNavigationProp;
+};
 
 const { Paragraph } = Typography;
 
-export const Greeting: FC = () => {
+const Greeting: FC<Props> = ({ navigation }) => {
   const onStartPress = useCallback(async () => {
     await AsyncStorage.setItem(AsyncStorageKeys.IsFirstLaunch, 'false');
     console.log(
@@ -20,7 +29,9 @@ export const Greeting: FC = () => {
       'false',
       'to async-storage',
     );
-  }, []);
+
+    navigation.navigate('Home');
+  }, [navigation]);
 
   return (
     <SafeAreaView>
@@ -59,3 +70,5 @@ export const Greeting: FC = () => {
     </SafeAreaView>
   );
 };
+
+export default Greeting;

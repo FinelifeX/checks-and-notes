@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import { rootNavigatorScreenOptions } from './options';
 import { SplashNavigator } from './SplashNavigator';
 import { GreetingNavigator } from './GreetingNavigator';
-import { rootNavigatorScreenOptions } from './options';
 import { HomeNavigator } from './HomeNavigator';
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const RootNavigator: FC = () => {
+const RootNavigator: FC = () => {
   return (
     <Navigator screenOptions={rootNavigatorScreenOptions}>
       <Screen name="Splash" component={SplashNavigator} />
@@ -16,3 +17,5 @@ export const RootNavigator: FC = () => {
     </Navigator>
   );
 };
+
+export default RootNavigator;

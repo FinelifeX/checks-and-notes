@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Text } from '@ui-kitten/components';
 import { StyleSheet, TextStyle } from 'react-native';
+import { Text } from '@ui-kitten/components';
 
 type Props = {
   style?: TextStyle;
