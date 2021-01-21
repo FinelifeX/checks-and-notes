@@ -1,4 +1,6 @@
-export const sleep = (timeout: number) =>
+const sleep = (timeout: number) =>
   new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
+
+export default sleep;

@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AsyncStorageKeys } from '@constants/asyncStorage';
 import { MOCK_FIRST_LAUNCH } from '@config/index';
 
-export const useFirstLaunch = () => {
+const useFirstLaunch = () => {
   const [isFirstLaunch, setFirstLaunch] = useState<boolean>(false);
   const [
     isFirstLaunchCheckInProgress,
@@ -33,3 +33,5 @@ export const useFirstLaunch = () => {
     isFirstLaunchCheckInProgress,
   };
 };
+
+export default useFirstLaunch;

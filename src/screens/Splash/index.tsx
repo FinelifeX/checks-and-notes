@@ -2,12 +2,12 @@ import React, { FC, useEffect } from 'react';
 import { View, Image, Text } from 'react-native';
 
 import { SplashScreenNavigationProp } from '@typings/navigation';
-import { useFirstLaunch } from '@hooks/useFirstLaunch';
+import useFirstLaunch from '@hooks/useFirstLaunch';
 import { useStatusBarContentMode } from '@utils/statusBarContentModeContext';
 import { StatusBarContentMode } from '@typings/statusBar';
+import sleep from '@utils/sleep';
 
 import { styles } from './styles';
-import { sleep } from '@utils/sleep';
 
 const SplashImg = require('@assets/images/splash.jpg');
 

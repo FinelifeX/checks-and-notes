@@ -4,7 +4,7 @@ import { Text, Icon, Button } from '@ui-kitten/components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { greetingScreenListItems } from '@constants/greetingScreenListItems';
-import { Colors } from '@constants/colors';
+import Colors from '@constants/colors';
 import { AsyncStorageKeys } from '@constants/asyncStorage';
 import Typography from '@components/Typography';
 import SafeAreaView from '@components/SafeAreaView';
