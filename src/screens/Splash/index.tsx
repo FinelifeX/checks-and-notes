@@ -7,6 +7,7 @@ import { useStatusBarContentMode } from '@utils/statusBarContentModeContext';
 import { StatusBarContentMode } from '@typings/statusBar';
 
 import { styles } from './styles';
+import { sleep } from '@utils/sleep';
 
 const SplashImg = require('@assets/images/splash.jpg');
 
@@ -22,7 +23,9 @@ const Splash: FC<Props> = ({ navigation }) => {
     if (isFirstLaunchCheckInProgress) return;
 
     setStatusBarContentMode(StatusBarContentMode.Light);
-    navigation.replace(isFirstLaunch ? 'Greeting' : 'Home');
+    sleep(3000).then(() => {
+      navigation.replace(isFirstLaunch ? 'Greeting' : 'Home');
+    });
   }, [
     isFirstLaunch,
     isFirstLaunchCheckInProgress,

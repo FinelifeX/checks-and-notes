@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Home } from '@screens/Home';
 import Note from '@screens/Note';
-import { Settings } from '@screens/Settings';
+import Settings from '@screens/Settings';
+import Home from '@screens/Home';
 
 import { navigatorDefaultOptions } from './options';
 
