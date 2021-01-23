@@ -1,18 +1,34 @@
 import React, { FC } from 'react';
-import { Divider, TopNavigation } from '@ui-kitten/components';
+import {
+  Divider,
+  Text,
+  TopNavigation,
+  TopNavigationProps,
+} from '@ui-kitten/components';
+import { StyleSheet } from 'react-native';
 
-type Props = {
-  title: string;
-  textAlignment?: 'start' | 'center';
-};
+type Props = TopNavigationProps & { title: string };
 
-const TopNavBar: FC<Props> = ({ title, textAlignment }) => {
+const TopNavBar: FC<Props> = ({ title, ...props }) => {
   return (
     <>
-      <TopNavigation title={title} alignment={textAlignment} />
+      <TopNavigation
+        {...props}
+        title={(textProps) => (
+          <Text {...textProps} style={defaultStyles.title}>
+            {title}
+          </Text>
+        )}
+      />
       <Divider />
     </>
   );
 };
+
+const defaultStyles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+  },
+});
 
 export default TopNavBar;

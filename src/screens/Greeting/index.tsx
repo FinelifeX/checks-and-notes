@@ -51,7 +51,7 @@ const Greeting: FC<Props> = ({ navigation }) => {
             <View key={item.id} style={styles.listItemContainer}>
               <Icon
                 name={item.iconName}
-                fill={Colors.textMain}
+                fill={Colors.white}
                 style={styles.listItemIcon}
               />
               <View>

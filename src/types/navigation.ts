@@ -1,5 +1,6 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { Note } from './notes';
 
 // Stacks
 
@@ -11,8 +12,8 @@ export type RootStackParamList = {
 
 export type HomeStackParamList = {
   Home: undefined;
-  Note: {
-    data: any;
+  Note?: {
+    note: Note;
   };
   Settings: undefined;
 };
@@ -38,4 +39,11 @@ export type NoteScreenRouteProp = RouteProp<HomeStackParamList, 'Note'>;
 export type GreetingScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Greeting'
+>;
+
+// Home screen
+
+export type HomeScreenNavigationProp = StackNavigationProp<
+  HomeStackParamList,
+  'Home'
 >;
