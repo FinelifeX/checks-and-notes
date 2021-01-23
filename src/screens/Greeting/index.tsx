@@ -30,7 +30,7 @@ const Greeting: FC<Props> = ({ navigation }) => {
       'to async-storage',
     );
 
-    navigation.navigate('Home');
+    navigation.replace('Home');
   }, [navigation]);
 
   return (
