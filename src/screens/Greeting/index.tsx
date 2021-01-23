@@ -30,7 +30,7 @@ const Greeting: FC<Props> = ({ navigation }) => {
       'to async-storage',
     );
 
-    navigation.navigate('Home');
+    navigation.replace('Home');
   }, [navigation]);
 
   return (
@@ -51,7 +51,7 @@ const Greeting: FC<Props> = ({ navigation }) => {
             <View key={item.id} style={styles.listItemContainer}>
               <Icon
                 name={item.iconName}
-                fill={Colors.textMain}
+                fill={Colors.white}
                 style={styles.listItemIcon}
               />
               <View>
