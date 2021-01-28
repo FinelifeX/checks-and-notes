@@ -1,6 +1,7 @@
 import { AsyncStorageKeys } from '@constants/asyncStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Note } from '@typings/notes';
+import { showToast } from '@utils/toast';
 import { useCallback, useEffect, useReducer, useState } from 'react';
 
 const toJson = (data: any) => JSON.stringify(data);
@@ -68,6 +69,11 @@ const useNotes = () => {
       })
       .finally(() => {
         setNotesLoading(false);
+        showToast({
+          title: 'Notes loaded!',
+          message: 'The list of toasts was loaded successfully!',
+          duration: 'LONG',
+        });
       });
   }, []);
 
