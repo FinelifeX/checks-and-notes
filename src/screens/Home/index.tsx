@@ -8,7 +8,7 @@ import SettingsButton from '@components/SettingsButton';
 import AddNoteButton from '@components/AddNoteButton';
 import NotesList from '@components/NotesList';
 import NotePopup from '@components/NotePopup';
-import NotesContext from '@utils/notesContext';
+import NotesContext from '@context/notesContext';
 import notesMock from '@constants/notesMock';
 import { HomeScreenNavigationProp } from '@typings/navigation';
 import { Note } from '@typings/notes';

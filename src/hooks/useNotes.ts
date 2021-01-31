@@ -1,7 +1,14 @@
 import { AsyncStorageKeys } from '@constants/asyncStorage';
+import { SnackbarContext } from '@context/snackbarContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Note } from '@typings/notes';
-import { useCallback, useEffect, useReducer, useState } from 'react';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
 
 const toJson = (data: any) => JSON.stringify(data);
 const fromJson = (string: string) => JSON.parse(string);
@@ -39,6 +46,7 @@ const notesReducer = (state: Note[], action: NotesReducerAction) => {
 };
 
 const useNotes = () => {
+  const { showSnackbar } = useContext(SnackbarContext);
   const [notes, changeNotes] = useReducer(notesReducer, []);
   const [isNotesLoading, setNotesLoading] = useState(true);
 
@@ -68,8 +76,12 @@ const useNotes = () => {
       })
       .finally(() => {
         setNotesLoading(false);
+        showSnackbar({
+          text: 'Notes loaded successfully!',
+          buttonText: 'Close',
+        });
       });
-  }, []);
+  }, [showSnackbar]);
 
   useEffect(() => {
     loadNotes();
