@@ -3,7 +3,7 @@ import { View, Image, Text } from 'react-native';
 
 import { SplashScreenNavigationProp } from '@typings/navigation';
 import useFirstLaunch from '@hooks/useFirstLaunch';
-import { useStatusBarContentMode } from '@utils/statusBarContentModeContext';
+import useStatusBarContentMode from '@hooks/useStatusBarContentMode';
 import { StatusBarContentMode } from '@typings/statusBar';
 import sleep from '@utils/sleep';
 

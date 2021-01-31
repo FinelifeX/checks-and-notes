@@ -16,6 +16,7 @@ module.exports = {
           '@constants': './src/constants',
           '@hooks': './src/hooks',
           '@config': './src/config',
+          '@context': './src/context',
         },
       },
     ],

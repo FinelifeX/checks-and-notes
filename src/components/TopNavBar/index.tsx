@@ -19,7 +19,11 @@ const TopNavBar: FC<Props> = ({ title, hasBackButton = false, ...props }) => {
       <TopNavigation
         {...props}
         title={(textProps) => (
-          <Text {...textProps} style={defaultStyles.title}>
+          <Text
+            {...textProps}
+            style={defaultStyles.title}
+            maxFontSizeMultiplier={2}
+          >
             {title}
           </Text>
         )}

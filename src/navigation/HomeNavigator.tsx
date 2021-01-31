@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Note from '@screens/Note';
 import Settings from '@screens/Settings';
 import Home from '@screens/Home';
-import NotesContext from '@utils/notesContext';
+import NotesContext from '@context/notesContext';
 import useNotes from '@hooks/useNotes';
 
 import { navigatorDefaultOptions } from './options';
