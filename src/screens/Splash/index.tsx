@@ -3,8 +3,6 @@ import { View, Image, Text } from 'react-native';
 
 import { SplashScreenNavigationProp } from '@typings/navigation';
 import useFirstLaunch from '@hooks/useFirstLaunch';
-import useStatusBarContentMode from '@hooks/useStatusBarContentMode';
-import { StatusBarContentMode } from '@typings/statusBar';
 import sleep from '@utils/sleep';
 
 import { styles } from './styles';
@@ -17,21 +15,14 @@ type Props = {
 
 const Splash: FC<Props> = ({ navigation }) => {
   const { isFirstLaunch, isFirstLaunchCheckInProgress } = useFirstLaunch();
-  const { setStatusBarContentMode } = useStatusBarContentMode();
 
   useEffect(() => {
     if (isFirstLaunchCheckInProgress) return;
 
-    setStatusBarContentMode(StatusBarContentMode.Light);
     sleep(3000).then(() => {
       navigation.replace(isFirstLaunch ? 'Greeting' : 'Home');
     });
-  }, [
-    isFirstLaunch,
-    isFirstLaunchCheckInProgress,
-    navigation,
-    setStatusBarContentMode,
-  ]);
+  }, [isFirstLaunch, isFirstLaunchCheckInProgress, navigation]);
 
   return (
     <>
