@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
-import { GestureResponderEvent, RefreshControl } from 'react-native';
+import { GestureResponderEvent, RefreshControl, Text } from 'react-native';
 import { Divider, List, ListProps } from '@ui-kitten/components';
 import { Note } from '@typings/notes';
 import NotesListItem from './NotesListItem';
 import Colors from '@constants/colors';
+import NotesListEmpty from './NotesListEmpty';
 
 type Props = Partial<ListProps> & {
   data: Note[];
@@ -41,6 +42,7 @@ const NotesList: FC<Props> = ({
         />
       }
       ItemSeparatorComponent={Divider}
+      ListEmptyComponent={NotesListEmpty}
       {...props}
     />
   );

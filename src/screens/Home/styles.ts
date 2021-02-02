@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     paddingHorizontal: 0,
   },
+  navBarControls: {
+    flexDirection: 'row',
+  },
 });
 
 export default styles;

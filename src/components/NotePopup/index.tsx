@@ -53,7 +53,10 @@ const NotePopup: FC<Props> = ({
     >
       <Card
         header={(headerProps) => (
-          <View {...headerProps} style={[headerProps?.style, headerStyles]}>
+          <View
+            {...headerProps}
+            style={[headerProps?.style, styles.header, headerStyles]}
+          >
             <Text category="h5" numberOfLines={1}>
               {note?.title}
             </Text>

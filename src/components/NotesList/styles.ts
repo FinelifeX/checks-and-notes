@@ -8,6 +8,15 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 8,
   },
+  emptyContainer: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  emptyHint: {
+    opacity: 0.6,
+  },
 });
 
 export default styles;

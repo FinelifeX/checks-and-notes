@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   backdrop: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
+  header: {},
   footer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',

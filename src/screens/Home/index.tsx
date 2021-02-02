@@ -1,19 +1,18 @@
 import React, { FC, useCallback, useContext, useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 
 import SafeAreaView from '@components/SafeAreaView';
 import TopNavBar from '@components/TopNavBar';
 import Layout from '@components/Layout';
 import SettingsButton from '@components/SettingsButton';
-import AddNoteButton from '@components/AddNoteButton';
 import NotesList from '@components/NotesList';
 import NotePopup from '@components/NotePopup';
 import NotesContext from '@context/notesContext';
-import notesMock from '@constants/notesMock';
 import { HomeScreenNavigationProp } from '@typings/navigation';
 import { Note } from '@typings/notes';
 
 import styles from './styles';
+import AddNoteButton from '@components/AddNoteButton';
 
 type Props = {
   navigation: HomeScreenNavigationProp;
@@ -22,8 +21,7 @@ type Props = {
 const Home: FC<Props> = ({ navigation }) => {
   const [longPressedNote, setLongPressedNote] = useState<Note | null>(null);
   const [isPopupRemoveAction, setPopupRemoveAction] = useState(false);
-  const { isNotesLoading, actions } = useContext(NotesContext);
-  const notes = notesMock;
+  const { isNotesLoading, notes, actions } = useContext(NotesContext);
 
   const onSettingsPress = useCallback(() => {
     navigation.navigate('Settings');
@@ -53,7 +51,12 @@ const Home: FC<Props> = ({ navigation }) => {
       <TopNavBar
         title="Your Notes"
         alignment="center"
-        accessoryRight={() => <SettingsButton onPress={onSettingsPress} />}
+        accessoryRight={() => (
+          <View style={styles.navBarControls}>
+            <SettingsButton onPress={onSettingsPress} />
+            <AddNoteButton onPress={onAddNotePress} />
+          </View>
+        )}
       />
       <Layout style={styles.layout}>
         <NotesList
@@ -63,7 +66,6 @@ const Home: FC<Props> = ({ navigation }) => {
           onItemPress={onNotePress}
           onItemLongPress={onNoteLongPress}
         />
-        <AddNoteButton onPress={onAddNotePress} />
         <NotePopup
           visible={!!longPressedNote}
           note={longPressedNote}
