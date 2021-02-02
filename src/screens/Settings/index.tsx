@@ -1,18 +1,16 @@
 import React, { FC } from 'react';
 
-import Typography from '@components/Typography';
 import SafeAreaView from '@components/SafeAreaView';
 import TopNavBar from '@components/TopNavBar';
 import Layout from '@components/Layout';
-
-const { Paragraph } = Typography;
+import SettingsList from '@components/SettingsList';
 
 const Settings: FC = () => {
   return (
     <SafeAreaView>
       <TopNavBar title="Settings" alignment="center" hasBackButton />
-      <Layout>
-        <Paragraph>Settings screen</Paragraph>
+      <Layout style={{ paddingHorizontal: 0, paddingVertical: 0 }}>
+        <SettingsList />
       </Layout>
     </SafeAreaView>
   );
