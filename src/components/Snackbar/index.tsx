@@ -14,10 +14,13 @@ import {
   Animated,
   ScrollView,
 } from 'react-native';
+
 import { SnackbarContext } from '@context/snackbarContext';
+import sleep from '@utils/sleep';
+
 import styles from './styles';
 
-const ANIM_DURATION = 1000;
+const ANIM_DURATION = 500;
 
 const Snackbar: FC = () => {
   const { id, text, buttonText, onButtonPress, closeSnackbar } = useContext(
@@ -27,57 +30,42 @@ const Snackbar: FC = () => {
   const animation = useRef(new Animated.Value(0)).current;
   const idRef = useRef<number>(0);
 
-  const fade = useCallback(
-    (duration: number = ANIM_DURATION) => {
-      setButtonDisabled(true);
-
+  const animate = useCallback(
+    (action: 'appear' | 'fade') => {
       Animated.timing(animation, {
-        toValue: 0,
-        duration,
+        toValue: action === 'appear' ? 1 : 0,
+        duration: ANIM_DURATION,
+        easing: Easing.linear,
         useNativeDriver: true,
-        easing: Easing.ease,
-      }).start();
-    },
-    [animation],
-  );
-
-  const appear = useCallback(
-    (duration: number = ANIM_DURATION) => {
-      setButtonDisabled(false);
-
-      Animated.timing(animation, {
-        toValue: 1,
-        duration,
-        useNativeDriver: true,
-        easing: Easing.ease,
       }).start();
     },
     [animation],
   );
 
   useEffect(() => {
+    if (id && id !== idRef.current) {
+      // @ts-ignore
+      Animated.timing(animation).stop();
+    }
+  }, [animation, id]);
+
+  useEffect(() => {
     if (id) {
-      setTimeout(() => {
+      sleep(8000).then(() => {
         if (id === idRef.current) {
           closeSnackbar();
         }
-      }, 10000);
-
-      if (id !== idRef.current) {
-        fade(ANIM_DURATION / 4);
-        setTimeout(appear, ANIM_DURATION / 2);
-        idRef.current = id;
-
-        return;
-      }
+      });
 
       idRef.current = id;
-      appear();
+      animate('appear');
+      setButtonDisabled(false);
     } else {
       idRef.current = 0;
-      fade();
+      animate('fade');
+      setButtonDisabled(true);
     }
-  }, [appear, closeSnackbar, fade, id]);
+  }, [animate, closeSnackbar, id]);
 
   return (
     <Animated.View style={[styles.container, { opacity: animation }]}>

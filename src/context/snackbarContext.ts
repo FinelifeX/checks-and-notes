@@ -10,13 +10,11 @@ export type Snackbar = Partial<{
 export type SnackbarState = Snackbar & {
   showSnackbar: (config: Omit<Snackbar, 'id'>) => void;
   closeSnackbar: () => void;
-  isShown: boolean;
 };
 
 const initialState: SnackbarState = {
   showSnackbar: () => {},
   closeSnackbar: () => {},
-  isShown: false,
 };
 
 export const SnackbarContext = React.createContext<SnackbarState>(initialState);
