@@ -31,23 +31,16 @@ const Snackbar: FC = () => {
   const idRef = useRef<number>(0);
 
   const animate = useCallback(
-    (action: 'appear' | 'fade') => {
+    (action: 'appear' | 'fade', onFinish?: () => void) => {
       Animated.timing(animation, {
         toValue: action === 'appear' ? 1 : 0,
         duration: ANIM_DURATION,
-        easing: Easing.linear,
+        easing: Easing.ease,
         useNativeDriver: true,
-      }).start();
+      }).start(onFinish);
     },
     [animation],
   );
-
-  useEffect(() => {
-    if (id && id !== idRef.current) {
-      // @ts-ignore
-      Animated.timing(animation).stop();
-    }
-  }, [animation, id]);
 
   useEffect(() => {
     if (id) {
@@ -57,8 +50,14 @@ const Snackbar: FC = () => {
         }
       });
 
-      idRef.current = id;
-      animate('appear');
+      if (idRef.current !== id) {
+        idRef.current = id;
+        animate('fade', () => animate('appear'));
+      } else {
+        idRef.current = id;
+        animate('appear');
+      }
+
       setButtonDisabled(false);
     } else {
       idRef.current = 0;
