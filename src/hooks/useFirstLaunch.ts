@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { AsyncStorageKeys } from '@constants/asyncStorage';
 import { MOCK_FIRST_LAUNCH } from '@config/index';
+import Themes from '@constants/themes';
 
 const useFirstLaunch = () => {
   const [isFirstLaunch, setFirstLaunch] = useState<boolean>(false);
@@ -15,10 +16,13 @@ const useFirstLaunch = () => {
     AsyncStorage.getItem(AsyncStorageKeys.IsFirstLaunch)
       .then(async (value) => {
         setFirstLaunch(!value);
+
         await AsyncStorage.setItem(
           AsyncStorageKeys.IsFirstLaunch,
           String(true),
         );
+
+        await AsyncStorage.setItem(AsyncStorageKeys.Theme, Themes.Dark);
       })
       .catch((e) => {
         console.log('useGreeting', e);

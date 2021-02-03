@@ -9,31 +9,33 @@ type Props = {
   description?: string;
 };
 
-const SettingsItem: FC<Props> = ({ right, left, title, description }) => (
-  <View
-    style={{
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      paddingVertical: 8,
-      paddingHorizontal: 16,
-    }}
-  >
+const SettingsItem: FC<Props> = ({ right, left, title, description }) => {
+  return (
     <View
       style={{
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         alignItems: 'center',
+        paddingVertical: 8,
+        paddingHorizontal: 16,
       }}
     >
-      {!!left && <View>{left}</View>}
-      <View>
-        <Text>{title}</Text>
-        <Text>{description}</Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+        }}
+      >
+        {!!left && <View>{left}</View>}
+        <View>
+          <Text>{title}</Text>
+          <Text>{description}</Text>
+        </View>
       </View>
+      {!!right && <View>{right}</View>}
     </View>
-    {!!right && <View>{right}</View>}
-  </View>
-);
+  );
+};
 
 export default SettingsItem;

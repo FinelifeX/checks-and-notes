@@ -1,22 +1,22 @@
-import { useCallback, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Themes from '@constants/themes';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorageKeys } from '@constants/asyncStorage';
 
 const useAppTheme = () => {
   const [theme, setTheme] = useState(Themes.Dark);
 
-  const toggleTheme = useCallback(() => {
-    switch (theme) {
-      case Themes.Dark:
-        setTheme(Themes.Light);
-        break;
-      case Themes.Light:
-        setTheme(Themes.Dark);
-        break;
-      default:
-    }
-  }, [theme]);
+  useEffect(() => {
+    AsyncStorage.getItem(AsyncStorageKeys.Theme)
+      .then((value) => {
+        if (value) setTheme(value as Themes);
+      })
+      .catch(() => {
+        console.log('Error while reading theme from storage');
+      });
+  }, []);
 
-  return { theme, toggleTheme };
+  return { theme, setTheme };
 };
 
 export default useAppTheme;

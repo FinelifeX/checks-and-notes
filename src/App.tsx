@@ -16,17 +16,25 @@ import useAppTheme from '@hooks/useAppTheme';
 import Themes from '@constants/themes';
 
 const mapping = require('./mapping.json');
+const customTheme = require('./theme.json');
 
 const SnackbarStateProvider = SnackbarContext.Provider;
 const AppThemeProvider = AppThemeContext.Provider;
 
 const Root: FC = () => {
   const snackbarState = useSnackbar();
-  const appThemeGlobal = useContext(AppThemeContext);
-  const appTheme = appThemeGlobal === Themes.Dark ? eva.dark : eva.light;
+  const { theme } = useContext(AppThemeContext);
+  const appTheme = theme === Themes.Dark ? eva.dark : eva.light;
 
   return (
-    <ApplicationProvider {...eva} theme={appTheme} customMapping={mapping}>
+    <ApplicationProvider
+      {...eva}
+      theme={{ ...appTheme, ...customTheme }}
+      customMapping={mapping}
+    >
+      <StatusBar
+        barStyle={theme === Themes.Dark ? 'light-content' : 'dark-content'}
+      />
       <SnackbarStateProvider value={snackbarState}>
         <NavigationContainer>
           <RootNavigator />
@@ -38,13 +46,12 @@ const Root: FC = () => {
 };
 
 const App: FC = () => {
-  const { theme } = useAppTheme();
+  const { theme, setTheme } = useAppTheme();
 
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
-      <StatusBar barStyle="light-content" />
-      <AppThemeProvider value={theme}>
+      <AppThemeProvider value={{ theme, setTheme }}>
         <Root />
       </AppThemeProvider>
     </>

@@ -5,11 +5,13 @@ import TopNavBar from '@components/TopNavBar';
 import Layout from '@components/Layout';
 import SettingsList from '@components/SettingsList';
 
+import styles from './styles';
+
 const Settings: FC = () => {
   return (
     <SafeAreaView>
       <TopNavBar title="Settings" alignment="center" hasBackButton />
-      <Layout style={{ paddingHorizontal: 0, paddingVertical: 0 }}>
+      <Layout style={styles.layout}>
         <SettingsList />
       </Layout>
     </SafeAreaView>

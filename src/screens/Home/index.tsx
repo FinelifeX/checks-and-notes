@@ -47,17 +47,19 @@ const Home: FC<Props> = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <SafeAreaView>
-      <TopNavBar
-        title="Your Notes"
-        alignment="center"
-        accessoryRight={() => (
-          <View style={styles.navBarControls}>
-            <SettingsButton onPress={onSettingsPress} />
-            <AddNoteButton onPress={onAddNotePress} />
-          </View>
-        )}
-      />
+    <>
+      <SafeAreaView style={styles.topBarContainer}>
+        <TopNavBar
+          title="Your Notes"
+          alignment="center"
+          accessoryRight={() => (
+            <View style={styles.navBarControls}>
+              <SettingsButton onPress={onSettingsPress} />
+              <AddNoteButton onPress={onAddNotePress} />
+            </View>
+          )}
+        />
+      </SafeAreaView>
       <Layout style={styles.layout}>
         <NotesList
           data={notes}
@@ -87,7 +89,7 @@ const Home: FC<Props> = ({ navigation }) => {
           }}
         />
       </Layout>
-    </SafeAreaView>
+    </>
   );
 };
 
